@@ -4,7 +4,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { api } from '@lib/api/axios';
+import { api } from '@/lib/axios';
 import { toast } from 'sonner';
 import { Task } from '@/types/task';
 import { updateTaskSchema } from '@schemas/taskSchema';

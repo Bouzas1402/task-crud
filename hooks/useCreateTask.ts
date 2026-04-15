@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { toast } from 'sonner';
-import { api } from '@/lib/api/axios';
+import { api } from '@/lib/axios';
 import { taskSchema } from '@/schemas/taskSchema';
 
 type FormValues = yup.InferType<typeof taskSchema>;

@@ -1,7 +1,7 @@
 'use client';
 import { useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { api } from '@lib/api/axios';
+import { api } from '@/lib/axios';
 import { Task } from '@/types/task';
 
 export function useTasks() {
