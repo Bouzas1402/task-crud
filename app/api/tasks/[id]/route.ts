@@ -1,5 +1,5 @@
 import * as yup from 'yup';
-import * as service from '@services/taskService';
+import * as service from '@/services/taskService';
 import { ApiResponse } from '@/lib/apiResponse';
 
 type Params = { params: { id: string } };

@@ -7,11 +7,11 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { api } from '@/lib/axios';
 import { toast } from 'sonner';
 import { Task } from '@/types/task';
-import { updateTaskSchema } from '@schemas/taskSchema';
+import { updateTaskSchema } from '@/schemas/taskSchema';
 
 export type FormValues = yup.InferType<typeof updateTaskSchema>;
 
-export function useUpdateTask({ task }: { task?: Task }) {
+export const useUpdateTask = ({ task }: { task?: Task }) => {
   const queryClient = useQueryClient();
 
   const {
@@ -64,4 +64,4 @@ export function useUpdateTask({ task }: { task?: Task }) {
     errors,
     handleSubmit: () => handleSubmit(onSubmit)
   };
-}
+};

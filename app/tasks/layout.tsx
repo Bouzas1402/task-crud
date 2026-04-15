@@ -1,7 +1,7 @@
 'use client';
 import { Suspense } from 'react';
-import { LinkButton } from '@/components/ui/LinkButton';
 import { useSelectedLayoutSegment } from 'next/navigation';
+import LinkButton from '@/components/ui/LinkButton';
 
 export default function PublicLayout({ children }: { children: React.ReactNode }) {
   return (

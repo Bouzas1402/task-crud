@@ -21,7 +21,7 @@ function getTextColor(color: ButtonColor) {
   return map[color];
 }
 
-export function Loading({ size = 20, text, color = 'primary' }: LoadingProps) {
+const Loading = ({ size = 20, text, color = 'primary' }: LoadingProps) => {
   return (
     <div className="flex items-center justify-center p-3">
       <svg
@@ -46,6 +46,6 @@ export function Loading({ size = 20, text, color = 'primary' }: LoadingProps) {
       {text && <span className={clsx('ml-3 text-sm', getTextColor(color))}>{text}</span>}
     </div>
   );
-}
+};
 
 export default Loading;

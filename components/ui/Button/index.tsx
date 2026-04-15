@@ -2,8 +2,7 @@
 
 import React, { forwardRef } from 'react';
 import clsx from 'clsx';
-
-import { ButtonVariant, ButtonColor, buttonColorClass } from '@components/ui/SharedButton/shared';
+import { ButtonVariant, ButtonColor, buttonColorClass } from '@/ui/SharedButton/shared';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
@@ -45,4 +44,4 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
 Button.displayName = 'Button';
 
-export { Button };
+export default Button;

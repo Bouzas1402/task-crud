@@ -4,9 +4,9 @@ import React from 'react';
 
 import { Controller } from 'react-hook-form';
 import { useCreateTask } from '@/hooks/useCreateTask';
-import { Button } from '@/components/ui/Button';
-import { Input } from '@/components/ui/Input';
-import { Textarea } from '@/components/ui/Textarea';
+import Button from '@/ui/Button';
+import Input from '@/ui/Input';
+import Textarea from '@/ui/Textarea';
 
 export default function CreateTaskPage() {
   const { isLoading, control, errors, handleSubmit } = useCreateTask();
@@ -42,12 +42,13 @@ export default function CreateTaskPage() {
                 placeholder="Descripción de la tarea"
                 error={!!errors.descripcion}
                 errorMessage={errors.descripcion?.message}
+                rows={10}
               />
             )}
           />
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex justify-end gap-3">
           <Button type="submit" className="w-[200px]" form="new-task-form" disabled={isLoading}>
             {isLoading ? 'Guardando...' : 'Crear'}
           </Button>

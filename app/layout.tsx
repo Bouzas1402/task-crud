@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import clsx from 'clsx';
 import { Toaster } from 'sonner';
-import { ReactQueryProvider } from '@providers/reactQueryProvider';
+import { ReactQueryProvider } from '@/providers/reactQueryProvider';
+import '@/lib/i18n';
 import './globals.css';
 
 const geistSans = Geist({

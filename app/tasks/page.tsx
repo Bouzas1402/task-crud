@@ -4,8 +4,8 @@ import React from 'react';
 import { useTasks } from '@/hooks/useTasks';
 import { Task } from '@/types/task';
 import TaskRow from '@/components/task/TaskRow';
-import Loading from '@/components/ui/Loading';
-import ErrorMessage from '@/components/ui/ErrorMessage';
+import Loading from '@/ui/Loading';
+import ErrorMessage from '@/ui/ErrorMessage';
 
 export default function TasksPage() {
   const { tasks, isLoading, isError } = useTasks();

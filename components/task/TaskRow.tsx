@@ -5,14 +5,14 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { CiTrash } from 'react-icons/ci';
 import { useUpdateTask } from '@/hooks/useUpdateTask';
-import { DeleteTaskModal } from './DeleteTaskModal';
-import { Switch } from '@/components/ui/Swicht';
-import { Button } from '@/components/ui/Button';
+import DeleteTaskModal from './DeleteTaskModal';
+import Switch from '@/ui/Swicht';
+import Button from '@/ui/Button';
 import { Task } from '@/types/task';
 
 type Optional<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
 
-export default function TaskRow({ task }: { task: Optional<Task, 'estado'> }) {
+const TaskRow = ({ task }: { task: Optional<Task, 'estado'> }) => {
   const [open, setOpen] = useState(false);
 
   const { mutate, isLoading } = useUpdateTask({ task: task as Task });
@@ -33,7 +33,7 @@ export default function TaskRow({ task }: { task: Optional<Task, 'estado'> }) {
             aria-label={`Ver detalles de ${task.titulo}`}
           >
             <div>
-              <div className="font-medium">{task.titulo}</div>
+              <div className="mb-2 font-semibold">{task.titulo}</div>
               {task.descripcion && <div className="text-sm text-gray-600">{task.descripcion}</div>}
             </div>
           </Link>
@@ -56,4 +56,6 @@ export default function TaskRow({ task }: { task: Optional<Task, 'estado'> }) {
       </li>
     </>
   );
-}
+};
+
+export default TaskRow;

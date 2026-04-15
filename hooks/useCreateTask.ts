@@ -10,7 +10,7 @@ import { taskSchema } from '@/schemas/taskSchema';
 
 type FormValues = yup.InferType<typeof taskSchema>;
 
-export function useCreateTask() {
+export const useCreateTask = () => {
   const queryClient = useQueryClient();
 
   const {
@@ -49,4 +49,4 @@ export function useCreateTask() {
     errors,
     handleSubmit: () => handleSubmit(onSubmit)
   };
-}
+};

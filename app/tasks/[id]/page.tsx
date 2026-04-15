@@ -2,16 +2,16 @@
 import { useState } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import { Controller } from 'react-hook-form';
-import { useTask } from '@hooks/useTask';
-import { useUpdateTask } from '@/hooks/useUpdateTask';
-import { Button } from '@/components/ui/Button';
-import { Input } from '@/components/ui/Input';
-import { Textarea } from '@/components/ui/Textarea';
-import Loading from '@/components/ui/Loading';
-import ErrorMessage from '@/components/ui/ErrorMessage';
-import { Switch } from '@/components/ui/Swicht';
-import { DeleteTaskModal } from '@/components/task/DeleteTaskModal';
 import { CiTrash } from 'react-icons/ci';
+import { useTask } from '@/hooks/useTask';
+import { useUpdateTask } from '@/hooks/useUpdateTask';
+import DeleteTaskModal from '@/components/task/DeleteTaskModal';
+import Button from '@/ui/Button';
+import Input from '@/ui/Input';
+import Textarea from '@/ui/Textarea';
+import Loading from '@/ui/Loading';
+import ErrorMessage from '@/ui/ErrorMessage';
+import Switch from '@/ui/Swicht';
 
 export default function EditTaskPage() {
   const router = useRouter();
@@ -21,12 +21,16 @@ export default function EditTaskPage() {
 
   const id = params?.id as string;
 
-  const { task, isLoading: isLoadingTask, isError: errorTask } = useTask(id);
+  const {
+    task,
+    isLoading: isLoadingTask,
+    isError: errorTask,
+    messageError: errorMessage
+  } = useTask(id);
   const { control, errors, isLoading, handleSubmit } = useUpdateTask({ task });
 
   if (isLoadingTask) return <Loading size={80} />;
-  if (errorTask) return <ErrorMessage message="Error cargando la tarea." />;
-
+  if (errorTask) return <ErrorMessage message={errorMessage} />;
   return (
     <>
       <DeleteTaskModal

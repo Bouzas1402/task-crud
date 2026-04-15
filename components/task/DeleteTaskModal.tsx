@@ -1,9 +1,7 @@
 'use client';
-
-import { Modal } from '@/components/ui/Modal';
-import { Button } from '@/components/ui/Button';
 import { useDeleteTask } from '@/hooks/useDeleteTask';
-
+import Modal from '@/ui/Modal';
+import Button from '@/ui/Button';
 interface DeleteTaskModalProps {
   open: boolean;
   onClose: () => void;
@@ -11,7 +9,7 @@ interface DeleteTaskModalProps {
   taskId: string;
 }
 
-export function DeleteTaskModal({ open, onClose, onSuccess, taskId }: DeleteTaskModalProps) {
+const DeleteTaskModal = ({ open, onClose, onSuccess, taskId }: DeleteTaskModalProps) => {
   const { deleteTask, isLoading } = useDeleteTask();
 
   const handleDelete = () => {
@@ -38,4 +36,6 @@ export function DeleteTaskModal({ open, onClose, onSuccess, taskId }: DeleteTask
       </div>
     </Modal>
   );
-}
+};
+
+export default DeleteTaskModal;

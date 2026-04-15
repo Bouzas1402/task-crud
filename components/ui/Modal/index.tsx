@@ -50,4 +50,4 @@ const Modal = forwardRef<HTMLDialogElement, ModalProps>(
 
 Modal.displayName = 'Modal';
 
-export { Modal };
+export default Modal;

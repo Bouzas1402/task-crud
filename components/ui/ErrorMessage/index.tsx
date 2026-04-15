@@ -9,7 +9,7 @@ type Props = {
   className?: string;
 };
 
-export function ErrorMessage({ message = 'Ha ocurrido un error', icon, className }: Props) {
+const ErrorMessage = ({ message = 'Ha ocurrido un error', icon, className }: Props) => {
   return (
     <div className={clsx(className, 'flex items-center justify-center text-red-600')} role="alert">
       <span className="flex h-5 w-5 items-center justify-center">
@@ -31,6 +31,6 @@ export function ErrorMessage({ message = 'Ha ocurrido un error', icon, className
       <span className="ml-2 text-2xl">{message}</span>
     </div>
   );
-}
+};
 
 export default ErrorMessage;

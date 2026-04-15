@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { api } from '@/lib/axios';
 import { Task } from '@/types/task';
 
-export function useTasks() {
+export const useTasks = () => {
   const { data, isLoading, isError } = useQuery<Task[], Error>({
     queryKey: ['tasks'],
     queryFn: async () => {
@@ -16,4 +16,4 @@ export function useTasks() {
   const tasks = useMemo(() => data || [], [data]);
 
   return { tasks, isLoading, isError };
-}
+};

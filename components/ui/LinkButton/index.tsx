@@ -12,14 +12,14 @@ interface LinkButtonProps {
   color?: ButtonColor;
 }
 
-export function LinkButton({
+const LinkButton = ({
   href,
   hidden,
   children,
   variant = 'solid',
   color = 'primary',
   className
-}: LinkButtonProps) {
+}: LinkButtonProps) => {
   return (
     <Link
       href={href}
@@ -33,4 +33,6 @@ export function LinkButton({
       {children}
     </Link>
   );
-}
+};
+
+export default LinkButton;

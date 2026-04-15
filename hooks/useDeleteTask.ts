@@ -4,7 +4,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { api } from '@/lib/axios';
 import { toast } from 'sonner';
 
-export function useDeleteTask() {
+export const useDeleteTask = () => {
   const queryClient = useQueryClient();
 
   const { mutate, isPending, isError } = useMutation<void, Error, string>({
@@ -32,4 +32,4 @@ export function useDeleteTask() {
     isLoading: isPending,
     isError
   };
-}
+};
