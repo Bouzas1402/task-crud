@@ -25,6 +25,7 @@ export default function CreateTaskPage() {
                 {...field}
                 label="Título"
                 placeholder="Título de la tarea"
+                description="Esto ayudará a identificar la tarea fácilmente"
                 error={!!errors.titulo}
                 errorMessage={errors.titulo?.message}
               />
@@ -40,6 +41,7 @@ export default function CreateTaskPage() {
                 {...field}
                 label="Descripción"
                 placeholder="Descripción de la tarea"
+                description="Añade más información para entender mejor la tarea"
                 error={!!errors.descripcion}
                 errorMessage={errors.descripcion?.message}
                 rows={10}

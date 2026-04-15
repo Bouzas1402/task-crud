@@ -36,9 +36,9 @@ const Modal = forwardRef<HTMLDialogElement, ModalProps>(
             onClose();
           }
         }}
-        className={clsx('m-auto w-full max-w-md rounded-lg p-0 backdrop:bg-black/40', className)}
+        className={clsx(className, 'm-auto w-full max-w-md rounded-lg p-4 backdrop:bg-black/40')}
       >
-        <div className="p-4">
+        <div>
           {title && <h2 className="mb-4 text-lg font-semibold">{title}</h2>}
 
           {children}

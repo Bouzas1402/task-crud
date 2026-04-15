@@ -1,6 +1,6 @@
 import { v7 as uuidv7 } from 'uuid';
 import { Task } from '@/types/task';
-import * as repo from '@repositories/taskRepository';
+import * as repo from '@/repositories/taskRepository';
 import { taskSchema } from '@/schemas/taskSchema';
 
 export async function getAllTasks(): Promise<Task[]> {
@@ -13,7 +13,6 @@ export async function getTaskById(id: string): Promise<Task | null> {
 }
 
 export async function createTask(payload: unknown): Promise<Task> {
-  // Validar todo el payload para POST
   const valid = await taskSchema.validate(payload, { abortEarly: false });
 
   const newTask: Task = {
@@ -29,7 +28,6 @@ export async function updateTask(
   id: string,
   partial: Partial<Task> | unknown
 ): Promise<Task | null> {
-  // Validar parcialmente para PATCH
   const validPartial = await taskSchema.partial().validate(partial, { abortEarly: false });
   return repo.update(id, validPartial as Partial<Task>);
 }

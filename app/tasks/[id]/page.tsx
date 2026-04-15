@@ -21,32 +21,28 @@ export default function EditTaskPage() {
 
   const id = params?.id as string;
 
-  const {
-    task,
-    isLoading: isLoadingTask,
-    isError: errorTask,
-    messageError: errorMessage
-  } = useTask(id);
+  const { task, isLoading: isLoadingTask, isError: errorTask, messageError } = useTask(id);
   const { control, errors, isLoading, handleSubmit } = useUpdateTask({ task });
 
   if (isLoadingTask) return <Loading size={80} />;
-  if (errorTask) return <ErrorMessage message={errorMessage} />;
+  if (errorTask) return <ErrorMessage message={messageError} />;
   return (
     <>
       <DeleteTaskModal
         open={open}
         onClose={() => setOpen(false)}
         taskId={id}
+        title={task?.titulo || ''}
         onSuccess={() => {
           setTimeout(() => router.push('/tasks'), 1000);
         }}
       />
       <main className="mx-auto max-w-xl p-6">
         <div className="flex justify-between">
-          <h1 className="mb-6 text-2xl font-semibold">Editar tarea</h1>
+          <h1 className="mb-6 text-2xl font-semibold">Editar tarea: {task?.titulo}</h1>
 
           <Button
-            className="h-full !p-0"
+            className="h-full !px-2"
             variant="ghost"
             color="danger"
             onClick={() => setOpen(true)}
@@ -65,6 +61,7 @@ export default function EditTaskPage() {
                   {...field}
                   label="Título"
                   placeholder="Título de la tarea"
+                  description="Esto ayudará a identificar la tarea fácilmente"
                   error={!!errors.titulo}
                   errorMessage={errors.titulo?.message}
                 />
@@ -81,6 +78,7 @@ export default function EditTaskPage() {
                   {...field}
                   label="Descripción"
                   placeholder="Descripción de la tarea"
+                  description="Añade más información para entender mejor la tarea"
                   error={!!errors.descripcion}
                   errorMessage={errors.descripcion?.message}
                   rows={10}

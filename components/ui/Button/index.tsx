@@ -2,7 +2,12 @@
 
 import React, { forwardRef } from 'react';
 import clsx from 'clsx';
-import { ButtonVariant, ButtonColor, buttonColorClass } from '@/ui/SharedButton/shared';
+import {
+  ButtonVariant,
+  ButtonColor,
+  buttonColorClass,
+  buttonShadowColor
+} from '@/ui/SharedButton/shared';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
@@ -30,8 +35,10 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         disabled={disabled}
         hidden={hidden}
         className={clsx(
-          'btn-base cursor-pointer rounded px-4 py-2 transition-colors disabled:cursor-not-allowed disabled:opacity-50',
+          'btn-base rounded-xl px-4 py-2 shadow-md transition-colors hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-50',
           buttonColorClass(color, variant),
+          buttonShadowColor(color),
+          disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer',
           className
         )}
         {...rest}

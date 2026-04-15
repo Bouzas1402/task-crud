@@ -24,9 +24,14 @@ const TaskRow = ({ task }: { task: Optional<Task, 'estado'> }) => {
 
   return (
     <>
-      <DeleteTaskModal open={open} onClose={() => setOpen(false)} taskId={task.id} />
-      <li className="rounded border p-3">
-        <div className="flex items-start justify-between gap-4">
+      <DeleteTaskModal
+        open={open}
+        onClose={() => setOpen(false)}
+        taskId={task.id}
+        title={task.titulo}
+      />
+      <li className="group border-border/60 rounded-xl border bg-white/80 p-4 backdrop-blur-sm transition-all duration-200 hover:-translate-y-[2px] hover:shadow-lg">
+        <div className="flex items-stretch justify-between gap-4">
           <Link
             href={`/tasks/${task.id}`}
             className="w-full bg-transparent p-0 text-left"
@@ -38,7 +43,7 @@ const TaskRow = ({ task }: { task: Optional<Task, 'estado'> }) => {
             </div>
           </Link>
 
-          <div className="flex flex-col items-end justify-between self-stretch">
+          <div className="flex flex-col items-end justify-between gap-4 self-stretch">
             <Switch
               checked={task.estado === 'COMPLETADA'}
               onChange={e => handleToggle(e.target.checked)}

@@ -7,9 +7,10 @@ interface DeleteTaskModalProps {
   onClose: () => void;
   onSuccess?: () => void;
   taskId: string;
+  title: string;
 }
 
-const DeleteTaskModal = ({ open, onClose, onSuccess, taskId }: DeleteTaskModalProps) => {
+const DeleteTaskModal = ({ open, onClose, onSuccess, taskId, title }: DeleteTaskModalProps) => {
   const { deleteTask, isLoading } = useDeleteTask();
 
   const handleDelete = () => {
@@ -22,7 +23,12 @@ const DeleteTaskModal = ({ open, onClose, onSuccess, taskId }: DeleteTaskModalPr
   };
 
   return (
-    <Modal open={open} onClose={onClose} title="Eliminar tarea">
+    <Modal
+      className="px-[24px] py-[32px]"
+      open={open}
+      onClose={onClose}
+      title={`Eliminar tarea: ${title}`}
+    >
       <p className="mb-4">¿Estás seguro de que quieres eliminar esta tarea?</p>
 
       <div className="flex justify-end gap-2">

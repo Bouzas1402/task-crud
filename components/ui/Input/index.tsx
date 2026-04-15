@@ -19,7 +19,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     return (
       <div className="w-full">
         {label && (
-          <label htmlFor={inputId} className="mb-1 block text-sm font-medium text-gray-700">
+          <label htmlFor={inputId} className="mb-1 block px-1 text-sm font-medium text-gray-700">
             {label}
           </label>
         )}
@@ -29,7 +29,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           ref={ref}
           disabled={disabled}
           className={clsx(
-            'w-full rounded border px-3 py-2 text-sm transition-colors outline-none',
+            'w-full rounded-xl border bg-white/80 px-3 py-2 text-sm shadow-md transition-colors outline-none',
             error ? 'border-red-500 focus:border-red-500' : 'border-gray-300 focus:border-blue-500',
             className
           )}
@@ -37,10 +37,10 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         />
 
         {error && (
-          <p className="mt-1 text-xs text-red-500">{errorMessage || DEFAULT_ERROR_MESSAGE}</p>
+          <p className="mt-1 px-1 text-xs text-red-500">{errorMessage || DEFAULT_ERROR_MESSAGE}</p>
         )}
 
-        {!error && description && <p className="text-xs text-gray-500">{description}</p>}
+        {!error && description && <p className="mt-1 px-1 text-xs text-gray-500">{description}</p>}
       </div>
     );
   }

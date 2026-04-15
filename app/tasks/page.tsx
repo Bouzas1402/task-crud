@@ -16,7 +16,7 @@ export default function TasksPage() {
   return (
     <main className="mx-auto max-w-2xl p-6">
       <h1 className="mb-4 text-2xl font-bold">Lista de Tareas</h1>{' '}
-      <ul className="space-y-3">
+      <ul className="space-y-4">
         {!tasks || tasks.length === 0 ? (
           <TaskRow
             task={{

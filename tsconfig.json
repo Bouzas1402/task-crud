@@ -20,14 +20,7 @@
     ],
     "paths": {
       "@/*": ["./*"],
-      "@services/*": ["./services/*"],
-      "@repositories/*": ["./repositories/*"],
-      "@ui/*": ["./components/ui/*"],
-      "@schemas/*": ["./schemas/*"],
-      "@hooks/*": ["./hooks/*"],
-      "@lib/*": ["./lib/*"],
-      "@providers/*": ["./providers/*"],
-      "@components/*": ["./components/*"]
+      "@/ui/*": ["./components/ui/*"]
     }
   },
   "include": [

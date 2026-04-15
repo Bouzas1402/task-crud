@@ -23,7 +23,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       <div className="w-full">
         {/* Label */}
         {label && (
-          <label htmlFor={inputId} className="mb-1 block text-sm font-medium text-gray-700">
+          <label htmlFor={inputId} className="mb-1 block px-1 text-sm font-medium text-gray-700">
             {label}
           </label>
         )}
@@ -35,9 +35,8 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           disabled={disabled}
           rows={rows}
           className={clsx(
-            'w-full resize-none rounded border px-3 py-2 text-sm transition-colors outline-none',
+            'w-full resize-none rounded-xl border bg-white/80 px-3 py-1 text-sm shadow-md transition-colors outline-none',
             error ? 'border-red-500 focus:border-red-500' : 'border-gray-300 focus:border-blue-500',
-            disabled && 'cursor-not-allowed opacity-60',
             className
           )}
           {...rest}
@@ -45,11 +44,11 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 
         {/* Error */}
         {error && (
-          <p className="mt-1 text-xs text-red-500">{errorMessage || DEFAULT_ERROR_MESSAGE}</p>
+          <p className="mt-1 px-1 text-xs text-red-500">{errorMessage || DEFAULT_ERROR_MESSAGE}</p>
         )}
 
         {/* Description */}
-        {!error && description && <p className="text-xs text-gray-500">{description}</p>}
+        {!error && description && <p className="px-1 text-xs text-gray-500">{description}</p>}
       </div>
     );
   }

@@ -22,11 +22,11 @@ function LayoutContent({ children }: { children: React.ReactNode }) {
       <header className="fixed top-0 z-10 flex w-full items-center justify-between bg-transparent p-4">
         <div className="text-xl font-bold">Mis tareas</div>
         <div className="flex gap-2">
-          <LinkButton hidden={isTasks} href="/tasks">
+          <LinkButton hidden={isTasks} color="primary" href="/tasks">
             Lista de tareas
           </LinkButton>
 
-          <LinkButton hidden={isCreate} href="/tasks/create">
+          <LinkButton hidden={isCreate} color="primary" href="/tasks/create">
             Nueva tarea
           </LinkButton>
         </div>

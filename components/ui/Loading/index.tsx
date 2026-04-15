@@ -11,7 +11,7 @@ interface LoadingProps {
 
 function getTextColor(color: ButtonColor) {
   const map = {
-    primary: 'text-blue-500',
+    primary: 'text-primary-500',
     neutral: 'text-slate-500',
     secondary: 'text-gray-500',
     success: 'text-green-500',
