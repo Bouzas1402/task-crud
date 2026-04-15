@@ -1,6 +1,6 @@
-import { NextResponse } from 'next/server';
 import * as yup from 'yup';
 import * as service from '@services/taskService';
+import { ApiResponse } from '@/lib/apiResponse';
 
 type Params = { params: { id: string } };
 
@@ -10,12 +10,13 @@ export async function GET(_request: Request, { params }: Params) {
 
     const task = await service.getTaskById(id);
 
-    if (!task) return NextResponse.json({ error: 'Task not found' }, { status: 404 });
+    if (!task) return ApiResponse.notFound('Task not found');
 
-    return NextResponse.json(task);
-  } catch (error: unknown) {
-    const message = error instanceof Error ? error.message : 'Error fetching task';
-    return NextResponse.json({ error: message }, { status: 500 });
+    return ApiResponse.success(task);
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : 'Error fetching task';
+
+    return ApiResponse.error(message);
   }
 }
 
@@ -26,15 +27,17 @@ export async function PATCH(request: Request, { params }: Params) {
 
     const updated = await service.updateTask(id, body);
 
-    if (!updated) return NextResponse.json({ error: 'Task not found' }, { status: 404 });
+    if (!updated) return ApiResponse.notFound('Task not found');
 
-    return NextResponse.json(updated);
-  } catch (error: unknown) {
-    if (error instanceof yup.ValidationError) {
-      return NextResponse.json({ errors: error.errors }, { status: 400 });
-    }
-    const message = error instanceof Error ? error.message : 'Error updating task';
-    return NextResponse.json({ error: message }, { status: 500 });
+    return ApiResponse.success(updated);
+  } catch (err: unknown) {
+    if (err instanceof yup.ValidationError) return ApiResponse.badRequest(err.message, err.errors);
+
+    const message = err instanceof Error ? err.message : 'Error updating task';
+
+    if (message.includes('Unexpected end of JSON input'))
+      return ApiResponse.badRequest('Invalid JSON payload');
+    return ApiResponse.error(message);
   }
 }
 
@@ -42,10 +45,10 @@ export async function DELETE(_request: Request, { params }: Params) {
   try {
     const { id } = await params;
     const removed = await service.deleteTask(id);
-    if (!removed) return NextResponse.json({ error: 'Task not found' }, { status: 404 });
-    return NextResponse.json({ success: true });
-  } catch (error: unknown) {
-    const message = error instanceof Error ? error.message : 'Error deleting task';
-    return NextResponse.json({ error: message }, { status: 500 });
+    if (!removed) return ApiResponse.notFound('Task not found');
+    return ApiResponse.success({ success: true });
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : 'Error deleting task';
+    return ApiResponse.error(message);
   }
 }

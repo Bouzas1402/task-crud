@@ -1,14 +1,15 @@
-import { NextResponse } from 'next/server';
 import * as yup from 'yup';
 import * as service from '@services/taskService';
+import { ApiResponse } from '@/lib/apiResponse';
 
 export async function GET() {
   try {
     const tasks = await service.getAllTasks();
-    return NextResponse.json(tasks);
-  } catch (error: unknown) {
-    const message = error instanceof Error ? error.message : 'Error fetching tasks';
-    return NextResponse.json({ error: message }, { status: 500 });
+    return ApiResponse.success(tasks);
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : 'Error get tasks';
+
+    return ApiResponse.error(message);
   }
 }
 
@@ -16,12 +17,14 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
     const created = await service.createTask(body);
-    return NextResponse.json(created, { status: 201 });
+    return ApiResponse.created(created);
   } catch (err: unknown) {
-    if (err instanceof yup.ValidationError) {
-      return NextResponse.json({ errors: err.errors }, { status: 400 });
-    }
+    if (err instanceof yup.ValidationError) return ApiResponse.badRequest(err.message, err.errors);
+
     const message = err instanceof Error ? err.message : 'Error creating task';
-    return NextResponse.json({ error: message }, { status: 500 });
+    if (message.includes('Unexpected end of JSON input'))
+      return ApiResponse.badRequest('Invalid JSON payload');
+
+    return ApiResponse.error(message);
   }
 }

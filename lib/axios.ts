@@ -9,12 +9,12 @@ export const api = axios.create({
 });
 
 api.interceptors.response.use(
-  response => response,
+  response => response.data,
   error => {
     let message = 'Error inesperado';
 
-    if (error.response?.data?.error) {
-      message = error.response.data.error;
+    if (error.response?.data?.message) {
+      message = error.response.data.message;
     }
     toast.error(message);
 
