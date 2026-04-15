@@ -1,0 +1,58 @@
+'use client';
+
+import React from 'react';
+
+import { Controller } from 'react-hook-form';
+import { useCreateTask } from '@/hooks/useCreateTask';
+import { Button } from '@/components/ui/Button';
+import { Input } from '@/components/ui/Input';
+import { Textarea } from '@/components/ui/Textarea';
+
+export default function CreateTaskPage() {
+  const { isLoading, control, errors, handleSubmit } = useCreateTask();
+
+  return (
+    <main className="mx-auto max-w-xl p-6">
+      <h1 className="mb-6 text-2xl font-semibold">Crear tarea</h1>
+
+      <form id="new-task-form" onSubmit={handleSubmit()} className="space-y-4">
+        <div>
+          <Controller
+            name="titulo"
+            control={control}
+            render={({ field }) => (
+              <Input
+                {...field}
+                label="Título"
+                placeholder="Título de la tarea"
+                error={!!errors.titulo}
+                errorMessage={errors.titulo?.message}
+              />
+            )}
+          />
+        </div>
+        <div>
+          <Controller
+            name="descripcion"
+            control={control}
+            render={({ field }) => (
+              <Textarea
+                {...field}
+                label="Descripción"
+                placeholder="Descripción de la tarea"
+                error={!!errors.descripcion}
+                errorMessage={errors.descripcion?.message}
+              />
+            )}
+          />
+        </div>
+
+        <div className="flex items-center gap-3">
+          <Button type="submit" className="w-[200px]" form="new-task-form" disabled={isLoading}>
+            {isLoading ? 'Guardando...' : 'Crear'}
+          </Button>
+        </div>
+      </form>
+    </main>
+  );
+}

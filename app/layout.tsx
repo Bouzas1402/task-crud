@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import clsx from 'clsx';
+import { Toaster } from 'sonner';
 import { ReactQueryProvider } from '@providers/reactQueryProvider';
 import './globals.css';
 
@@ -25,13 +26,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={clsx(geistSans.variable, geistMono.variable, 'h-full', 'antialiased')}
-    >
+    <html className={clsx(geistSans.variable, geistMono.variable, 'h-full', 'antialiased')}>
       <body className="flex min-h-full flex-col">
         {' '}
         <ReactQueryProvider>{children}</ReactQueryProvider>
+        <Toaster richColors position="top-right" />
       </body>
     </html>
   );
