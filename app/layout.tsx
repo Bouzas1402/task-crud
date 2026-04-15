@@ -30,7 +30,7 @@ export default function RootLayout({
       <body className="flex min-h-full flex-col">
         {' '}
         <ReactQueryProvider>{children}</ReactQueryProvider>
-        <Toaster richColors position="top-right" />
+        <Toaster richColors position="bottom-right" />
       </body>
     </html>
   );

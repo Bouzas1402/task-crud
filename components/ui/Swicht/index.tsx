@@ -39,6 +39,7 @@ const Switch = forwardRef<HTMLInputElement, SwitchProps>(
       className,
       id,
       disabled,
+      hidden,
       checked,
       onChange,
       variant = 'solid',
@@ -54,7 +55,7 @@ const Switch = forwardRef<HTMLInputElement, SwitchProps>(
     const bgClass = checked ? SWITCH_STYLES[variant][colorOn] : SWITCH_STYLES[variant][colorOff];
 
     return (
-      <div className="w-full">
+      <div hidden={hidden} className="w-full">
         {/* Label */}
         {label && (
           <label htmlFor={inputId} className="mb-1 block text-sm font-medium text-gray-700">

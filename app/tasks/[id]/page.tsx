@@ -1,5 +1,5 @@
 'use client';
-import { useRouter } from 'next/navigation';
+import { useRouter, useParams } from 'next/navigation';
 import { Controller } from 'react-hook-form';
 import { useTask } from '@hooks/useTask';
 import { useUpdateTask } from '@/hooks/useUpdateTask';
@@ -12,7 +12,11 @@ import { Switch } from '@/components/ui/Swicht';
 
 export default function EditTaskPage() {
   const router = useRouter();
-  const { task, isLoading: isLoadingTask, isError: errorTask } = useTask();
+  const params = useParams();
+
+  const id = params?.id as string;
+
+  const { task, isLoading: isLoadingTask, isError: errorTask } = useTask(id);
   const { control, errors, isLoading, handleSubmit } = useUpdateTask({ task });
 
   if (isLoadingTask) return <Loading size={80} />;
