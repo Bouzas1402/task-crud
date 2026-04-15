@@ -6,7 +6,8 @@ type Params = { params: { id: string } };
 
 export async function GET(_request: Request, { params }: Params) {
   try {
-    const { id } = params;
+    const { id } = await params;
+
     const task = await service.getTaskById(id);
 
     if (!task) return NextResponse.json({ error: 'Task not found' }, { status: 404 });
@@ -20,7 +21,7 @@ export async function GET(_request: Request, { params }: Params) {
 
 export async function PATCH(request: Request, { params }: Params) {
   try {
-    const { id } = params;
+    const { id } = await params;
     const body = await request.json();
 
     const updated = await service.updateTask(id, body);
@@ -39,7 +40,7 @@ export async function PATCH(request: Request, { params }: Params) {
 
 export async function DELETE(_request: Request, { params }: Params) {
   try {
-    const { id } = params;
+    const { id } = await params;
     const removed = await service.deleteTask(id);
     if (!removed) return NextResponse.json({ error: 'Task not found' }, { status: 404 });
     return NextResponse.json({ success: true });
