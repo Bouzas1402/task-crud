@@ -1,1 +1,44 @@
-[]
+[
+  {
+    "id": "1",
+    "titulo": "tarea 1",
+    "descripcion": "Lorem ipsum dolor sit amet.",
+    "estado": "PENDIENTE"
+  },
+  {
+    "id": "2",
+    "titulo": "tarea 2",
+    "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nSed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris.\nNisi ut aliquip ex ea commodo consequat.\nDuis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\nExcepteur sint occaecat cupidatat non proident.\nSunt in culpa qui officia deserunt mollit anim id est laborum.\nLorem ipsum dolor sit amet, consectetur adipiscing elit.\nSed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nUt enim ad minim veniam.",
+    "estado": "COMPLETADA"
+  },
+  {
+    "id": "3",
+    "titulo": "tarea 3",
+    "descripcion": "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "estado": "PENDIENTE"
+  },
+  {
+    "id": "4",
+    "titulo": "tarea 4",
+    "descripcion": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.\nNisi ut aliquip ex ea commodo consequat.",
+    "estado": "COMPLETADA"
+  },
+  {
+    "id": "5",
+    "titulo": "tarea 5",
+    "descripcion": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\nExcepteur sint occaecat cupidatat non proident.\nSunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "estado": "PENDIENTE"
+  },
+  {
+    "id": "7",
+    "titulo": "tarea 7",
+    "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nSed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris.\nNisi ut aliquip ex ea commodo consequat.\nDuis aute irure dolor in reprehenderit.\nVelit esse cillum dolore eu fugiat nulla pariatur.",
+    "estado": "PENDIENTE"
+  },
+  {
+    "id": "10",
+    "titulo": "tarea 10",
+    "descripcion": "Sunt in culpa qui officia deserunt mollit anim id est laborum.\nLorem ipsum dolor sit amet, consectetur adipiscing elit.\nSed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nUt enim ad minim veniam.\nQuis nostrud exercitation ullamco laboris.\nNisi ut aliquip ex ea commodo consequat.\nDuis aute irure dolor in reprehenderit.\nVelit esse cillum dolore eu fugiat nulla pariatur.\nExcepteur sint occaecat cupidatat non proident.\nSunt in culpa qui officia deserunt.",
+    "estado": "COMPLETADA"
+  }
+]
