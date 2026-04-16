@@ -6,9 +6,10 @@ import { Task } from '@/types/task';
 import TaskRow from '@/components/task/TaskRow';
 import Loading from '@/ui/Loading';
 import ErrorMessage from '@/ui/ErrorMessage';
+import Pagination from '@/components/paginated/Paginated';
 
 export default function TasksPage() {
-  const { tasks, isLoading, isError } = useTasks();
+  const { tasks, totalPages, page, setPage, isLoading, isError } = useTasks();
 
   if (isLoading) return <Loading size={80} text="Cargando tareas..." />;
   if (isError) return <ErrorMessage message="Error al cargar tareas" />;
@@ -33,6 +34,9 @@ export default function TasksPage() {
           </>
         )}
       </ul>
+      {totalPages && totalPages > 1 && (
+        <Pagination page={page} totalPages={totalPages} onPageChange={setPage} />
+      )}
     </main>
   );
 }

@@ -5,6 +5,11 @@ export async function getAll(): Promise<Task[]> {
   return readData();
 }
 
+export async function getAllPaginated(offset: number, limit: number): Promise<Task[]> {
+  const tasks = await readData();
+  return tasks.slice(offset, offset + limit);
+}
+
 export async function getById(id: string): Promise<Task | undefined> {
   const tasks = await readData();
   return tasks.find(t => t.id === id);
@@ -33,4 +38,9 @@ export async function remove(id: string): Promise<boolean> {
   if (filtered.length === tasks.length) return false;
   await writeData(filtered);
   return true;
+}
+
+export async function count(): Promise<number> {
+  const tasks = await readData();
+  return tasks.length;
 }
