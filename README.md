@@ -36,6 +36,72 @@ El objetivo del proyecto es demostrar el uso de buenas prácticas en desarrollo 
 
 ---
 
+### Organización
+
+- 📁 **app/** → Rutas y API (Next.js App Router)
+- 📁 **components/** → Componentes reutilizables (UI y dominio)
+- 📁 **hooks/** → Custom hooks
+- 📁 **services/** → Lógica de negocio / llamadas a API
+- 📁 **repositories/** → Acceso a datos
+- 📁 **schemas/** → Validaciones (Yup/Zod)
+- 📁 **lib/** → Configuración y utilidades base (clientes, helpers globales, setup de librerías)
+- 📁 **providers/** → Context providers de React (estado global, theme, query client, etc.)
+- 📁 **tests/** → Tests unitarios e integración
+- 📁 **utils/** → Helpers reutilizables
+
+## 📁 Estructura del proyecto
+
+```bash
+.
+├──📁 app
+│   ├──📁 api
+│   │   └──📁 tasks
+│   │       ├──📁 [id]
+│   │       │   └──⚛️ route.ts
+│   │       └──📁 paginated
+│   │           └──⚛️ route.ts
+│   ├──📁 tasks
+│   │   ├──📁 [id]
+│   │   │   └──⚛️ page.tsx
+│   │   ├──📁 create
+│   │   │   └──⚛️ page.tsx
+│   │   ├──⚛️ layout.tsx
+│   │   └──⚛️ page.tsx
+│   ├──⚛️ globals.css
+│   ├──⚛️ layout.tsx
+│   └──⚛️ page.tsx
+│
+├──📁 components
+│   ├──📁 paginated
+│   ├──📁 task
+│   └──📁 ui
+│       ├──📁 Button
+│       ├──📁 ErrorMessage
+│       ├──📁 Input
+│       ├──📁 LinkButton
+│       ├──📁 Loading
+│       ├──📁 Modal
+│       ├──📁 SharedButton
+│       ├──📁 Switch
+│       └──📁 Textarea
+│
+├──📁 data
+├──📁 hooks
+├──📁 lib
+├──📁 locales
+├──📁 providers
+├──📁 public
+├──📁 repositories
+├──📁 schemas
+├──📁 services
+├──📁 tests
+├──📁 types
+└──📁 utils
+
+```
+
+---
+
 ## Datos
 
 Se ha optado por una solución de persistencia basada en archivo JSON en lugar de una base de datos completa, con el objetivo de:
